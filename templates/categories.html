@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="header-actions">
+    <h1><i class="fas fa-tags"></i> Gestionar Categorías</h1>
+</div>
+
+<div class="card mb-1">
+    <form id="add-category-form">
+        <div class="form-group">
+            <label for="category-name">Nombre de la Categoría</label>
+            <input type="text" id="category-name" required placeholder="Ej: Mascotas, Limpieza...">
+        </div>
+        <button type="submit" class="btn btn-primary"><i class="fas fa-plus-circle"></i> Crear Categoría</button>
+    </form>
+</div>
+
+<div class="card">
+    <h2>Categorías Existentes</h2>
+    <div id="categories-list" class="item-list mt-1">
+        <!-- Renderizado por JS -->
+    </div>
+</div>
+
+<div id="message" class="error-container" style="display: none;"></div>
+{% endblock %}

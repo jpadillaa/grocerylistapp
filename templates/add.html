@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="header-actions">
+    <h1><i class="fas fa-cart-plus"></i> Agregar Nuevo Item</h1>
+    <a href="{{ url_for('views.list_view') }}" class="btn btn-outline"><i class="fas fa-arrow-left"></i> Volver</a>
+</div>
+
+<div class="card mb-1">
+    <form id="add-item-form">
+        <div class="form-group">
+            <label for="name">Nombre</label>
+            <input type="text" id="name" required maxlength="80" placeholder="Ej. Leche, Huevos...">
+        </div>
+        <div class="form-group">
+            <label for="qty">Cantidad</label>
+            <input type="number" id="qty" value="1" min="1" required>
+        </div>
+        <div class="form-group">
+            <label for="category">Categoría</label>
+            <select id="category">
+                <option value="Sin categoría">Sin categoría</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary"><i class="fas fa-plus"></i> Agregar Individual</button>
+    </form>
+</div>
+
+<div class="card">
+    <h2><i class="fas fa-magic"></i> O Aplicar Plantilla por Tienda</h2>
+    <div id="template-section" class="filters-grid">
+        <div class="filter-group">
+            <label for="store-select">Tienda</label>
+            <select id="store-select">
+                <option value="">Seleccione una tienda...</option>
+            </select>
+        </div>
+        <div class="filter-group" style="display: flex; align-items: flex-end;">
+            <button id="btn-apply-template" class="btn btn-outline" style="width: 100%;"><i class="fas fa-wand-magic-sparkles"></i> Aplicar Plantilla</button>
+        </div>
+    </div>
+</div>
+
+<div id="message" class="error-container" style="display: none;"></div>
+{% endblock %}

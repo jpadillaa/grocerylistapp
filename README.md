@@ -1,10 +1,10 @@
-# Lista de Compras Familiar
+# Lista de compras
 
-Aplicación Flask para gestionar la lista de compras familiar con persistencia en SQLite y soporte para plantillas por tienda.
+Aplicación Flask para gestionar una la lista de compras, con persistencia en SQLite.
 
 ## Instalación y Ejecución Local
 
-Siga estos pasos para configurar y ejecutar el proyecto sin Docker:
+Siga estos pasos para configurar y ejecutar el proyecto:
 
 ### 1. Crear un entorno virtual
 Se recomienda el uso de un entorno virtual para aislar las dependencias del proyecto:
@@ -24,19 +24,25 @@ pip install -r requirements.txt
 ### 3. Ejecutar la aplicación con Gunicorn
 Asegúrese de que el directorio para los datos exista y ejecute la aplicación especificando la configuración de desarrollo para que use rutas locales:
 
+En Linux/macOS
 ```bash
 mkdir -p data
 FLASK_CONFIG=app.config.DevelopmentConfig gunicorn --bind 0.0.0.0:8080 app.main:app
 ```
+En Windows
+```bash
+$env:FLASK_CONFIG="app.config.DevelopmentConfig"; gunicorn --bind 0.0.0.0:8080 app.main:app
+```
 
-La aplicación estará disponible en `http://localhost:8080`.
+
+La aplicación estará disponible en `http://127.0.0.1:8080`.
 
 ## Verificación de Requisitos
 
 Para verificar que la aplicación funciona correctamente, siga estos pasos:
 
 1. **Persistencia**: Reinicie el proceso de Gunicorn. Los items y categorías creados deben permanecer en la base de datos local.
-2. **API de Salud**: Acceda a `http://localhost:8080/health` para recibir `{"status":"ok"}`.
+2. **API de Salud**: Acceda a `http://127.0.0.1:8080/health` para recibir `{"status":"ok"}`.
 3. **Checklist**: En la pantalla principal (`/`), cree items y marque los checkboxes para ver el tachado visual y la actualización en DB.
 4. **Categorías**: Vaya a `/categories` para crear categorías. Verifique que no puede borrar una categoría si tiene items asociados.
 5. **Plantillas**: En `/add`, use el selector de tiendas para aplicar una plantilla predefinida (por defecto se inicializa vacío en `/data/templates.json`).
